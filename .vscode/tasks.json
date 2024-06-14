@@ -7,7 +7,7 @@
 			"model": "${command:virtual-hardware.getModel}",
 			"problemMatcher": [],
 			"config": "${workspaceFolder}/avh_configs/FVP_Corstone_SSE-300_Config.txt",
-			"args": ["--simlimit", "10000"],
+			"args": ["--simlimit", "5000"],
 			"label": "virtual-hardware.run: Run Program"
 		}
 	]

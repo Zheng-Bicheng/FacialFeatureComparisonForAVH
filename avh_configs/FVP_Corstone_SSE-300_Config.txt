@@ -4,11 +4,11 @@
 cpu0.CFGDTCMSZ=15                                     # (int   , init-time) default = '0xd'    : Size of the data TCM. 0=No DTCM implemented. Otherwise=Size of DTCM=pow(2, CFGDTCMSZ - 1) KB. Minimum size is 4KB
 cpu0.CFGITCMSZ=15                                     # (int   , init-time) default = '0xb'    : Size of the instruction TCM. 0=No ITCM implemented. Otherwise=Size of ITCM=pow(2, CFGITCMSZ - 1) KB. Minimum size is 4KB
 cpu0.semihosting-enable=1                             # (bool  , init-time) default = '0'      : Enable semihosting SVC traps. Applications that do not use semihosting must set this parameter to false.
-#mps3_board.telnetterminal0.start_telnet=0             # (bool  , init-time) default = '1'      : Start telnet if nothing connected
-#mps3_board.telnetterminal1.start_telnet=0             # (bool  , init-time) default = '1'      : Start telnet if nothing connected
-#mps3_board.telnetterminal2.start_telnet=0             # (bool  , init-time) default = '1'      : Start telnet if nothing connected
-#mps3_board.telnetterminal3.start_telnet=0             # (bool  , init-time) default = '1'      : Start telnet if nothing connected
-mps3_board.uart0.shutdown_tag=EXITTHESIM            # (string, run-time ) default = ''       : Shutdown simulation when a string is transmitted
-mps3_board.uart0.out_file=-                         # (string, init-time) default = ''       : Output file to hold data written by the UART (use '-' to send all output to stdout)
+mps3_board.telnetterminal0.start_telnet=0             # (bool  , init-time) default = '1'      : Start telnet if nothing connected
+mps3_board.telnetterminal1.start_telnet=0             # (bool  , init-time) default = '1'      : Start telnet if nothing connected
+mps3_board.telnetterminal2.start_telnet=0             # (bool  , init-time) default = '1'      : Start telnet if nothing connected
+mps3_board.telnetterminal5.start_telnet=0             # (bool  , init-time) default = '1'      : Start telnet if nothing connected
+mps3_board.uart0.shutdown_tag="EXITTHESIM"            # (string, run-time ) default = ''       : Shutdown simulation when a string is transmitted
+mps3_board.uart0.out_file="-"                         # (string, init-time) default = ''       : Output file to hold data written by the UART (use '-' to send all output to stdout)
 mps3_board.visualisation.disable-visualisation=1      # (bool  , init-time) default = '0'      : Enable/disable visualisation
 #------------------------------------------------------------------------------
