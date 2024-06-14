@@ -1,5 +1,5 @@
 solution:
-  description: Simple Hello World example for V2M-MPS3-SSE-300-FVP
+  description: Simple Project for V2M-MPS3-SSE-300-FVP
   created-for: CMSIS-Toolbox@2.0.0
   compiler: AC6
 
@@ -40,4 +40,4 @@ solution:
       optimize: balanced
 
   projects:
-    - project: ./hello.cproject.yml
+    - project: ./project.cproject.yml
