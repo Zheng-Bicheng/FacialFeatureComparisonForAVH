@@ -3,12 +3,11 @@ project:
     - group: Documentation
       files:
         - file: README.md
-    - group: Application
+    - group: User
       files:
-        - file: app.c
-    - group: Board
-      files:
-        - file: main.c
+        - file: src/app.c
+        - file: src/main.c
+        - file: src/runtime.c
     - group: FaceFeature
       files:
         - file: face_feature/codegen/host/src/face_feature_lib0.c
