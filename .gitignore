@@ -4,3 +4,10 @@ tmp
 *.cbuild-idx.yml
 *.cbuild.yml
 *.cprj
+
+# For Modle
+*.tar
+*.onnx
+*.pdiparams
+*.pdmodel
+*.pdiparams.info

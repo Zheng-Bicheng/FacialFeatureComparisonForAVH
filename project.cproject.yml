@@ -10,6 +10,11 @@ project:
     - group: Board
       files:
         - file: main.c
+    - group: FaceFeature
+      files:
+        - file: cls/codegen/host/src/cls_lib0.c
+        - file: cls/codegen/host/src/cls_lib1.c
+        - file: cls/runtime/src/runtime/crt/common/crt_backend_api.c
 
   linker:
     -  script: ./RTE/Device/SSE-300-MPS3/fvp_sse300_mps3_s.sct
