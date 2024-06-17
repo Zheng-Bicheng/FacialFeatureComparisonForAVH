@@ -10,8 +10,6 @@
 
 # 1 实验背景
 
-## 1.1 项目背景介绍
-
 在现代嵌入式和物联网开发中，快速迭代和高效测试至关重要。Arm 虚拟硬件（Arm Virtual Hardware, AVH）提供了一个强大的开发环境。基于 Arm 虚拟硬件的百度云服务器内置 Ubuntu Linux 镜像，并包含了丰富的 Arm 开发工具，如 Arm 编译器、FVP 模型和针对 Cortex-M 系列处理器的其他工具。这些工具不仅帮助开发者快速上手，还支持评估 CI/CD、MLOps 和 DevOps 工作流中的自动化测试。订阅访问和使用此版本的 Arm 虚拟硬件，您需同意产品最终用户许可协议中与免费测试版许可相关的条款和协议。 
  
 Arm 虚拟硬件产品的技术概览示意图如下所示。开发者也可访问 Arm 虚拟硬件[产品介绍页](https://www.arm.com/products/development-tools/simulation/virtual-hardware)和产品[技术文档](https://arm-software.github.io/AVH/main/overview/html/index.html)了解更多关于 Arm 虚拟硬件产品知识。 
@@ -355,7 +353,7 @@ Arm 虚拟硬件镜像目前已经在百度智能云云市场上线，具体的�
 
 **强烈推荐**有基础的开发者使用 **SSH** 远程登录方法连接所创建的使用 Arm 虚拟硬件镜像的百度智能云云服务器 BCC 实例（例如，终端使用命令 `ssh ubuntu@公网 IP`，密码为`avh`），具体连接方法可参考博客《 [Arm 虚拟硬件实践专题一：产品订阅指南（百度智能云版）](https://mp.weixin.qq.com/s/sYQkM9EaBveB2KHJKopkbQ)》，开发体验会更加稳定和流畅。可选地，可参考 3.5.1 章节所描述的 《浏览器窗口通过 VNC 登录》的方式连接实例。
 
-## 3.5.1 浏览器窗口登录（通过 VNC 登录）
+### 3.5.1 浏览器窗口登录（通过 VNC 登录）
 
 本小节将介绍一种更为简单的百度智能云云服务器 BCC 实例的登录方式供开发者参考和使用。如下图所示，点击**实例列表详情**页面所创建的使用 Arm 虚拟硬件镜像的百度智能云云服务器 BCC 实例（确保实例【状态】为 “运行中” ）右侧蓝色的【**远程登录**】按钮。弹出的窗口选项选择【**通过 VNC 登录**】，点击后页面即刻跳转至浏览器窗口登录页面如图 38 所示。完全启动后（即不再有新的启动日志滚动），输入登录用户名`ubuntu`和登录密码`avh`（ Linux 命令行默认不显示密码）。
 
@@ -609,7 +607,7 @@ Info: /OSCI/SystemC: Simulation stopped by user.
    ```
 
 
-## 2 配置开发环境
+# 4 配置开发环境
 
 该项目基于 **使用Arm 架构的百度云服务器** 并利用 **Arm 虚拟硬件 (Arm Virtual Hardware, AVH)** 运行。根据服务器架构的不同，我们需要针对性的对开发环境进行配置。为了简化大家的时间，我们提供了两个脚本文件来帮助大家快速配置环境，如需了解更多细节，请参考脚本文件中的注释:
 
@@ -624,9 +622,9 @@ bash scripts/config_cmsis_toolbox.sh
 bash scripts/config_python.sh
 ```
 
-## 3 配置并编译人脸特征提取模型
+# 5 配置并编译人脸特征提取模型
 
-### 3.1 模型介绍
+## 5.1 模型介绍
 
 本项目使用的人脸识别特征提取模型是 **Adaface** ，你可以在 [insightface/recognition/arcface_paddle](https://github.com/deepinsight/insightface/tree/master/recognition/arcface_paddle) 中找到它的详细介绍。受限于 MCU 设备极为紧张的内存，我们这里选用了 backbone 为 **MobileFace** 的 **Adaface** 模型，以下是它的详细参数：
 
@@ -634,7 +632,7 @@ bash scripts/config_python.sh
 | ------------------------- | ------ | ------- | ------- | -------| -------- |---- |
 | MobileFace-Paddle      | 0.9952 | 0.9280  | 0.9612  | 4.3ms  | 2.3ms    | [download link](https://paddle-model-ecology.bj.bcebos.com/model/insight-face/mobileface_v1.0_infer.tar)  |
 
-### 3.2 使用 TVM 编译模型
+## 5.2 使用 TVM 编译模型
 
 本项目参考了 [ArmDeveloperEcosystem/Paddle-examples-for-AVH](https://github.com/ArmDeveloperEcosystem/Paddle-examples-for-AVH)，使用 **TVM** 来将人脸特征提取模型转换成可以在 MCU 设备上部署的 C 代码，关于 TVM 的更多介绍，你可以参考 [apache/tvm](https://github.com/apache/tvm)。
 
@@ -657,9 +655,9 @@ bash scripts/build_facial_feature_model.sh
 
 运行脚本后，该项目目录下将出现 **face_feature** 文件夹，文件夹内存放了可以在 MCU 设备上部署模型的 C 代码。
 
-## 4 编译基于 AVH 实现的人脸特征提取 Demo
+# 6 编译基于 AVH 实现的人脸特征提取 Demo
 
-### 4.1 将图片转换为输入数据
+## 6.1 将图片转换为输入数据
 
 [FacialFeatureComparisonForAVH/images](./images) 目录下存放了三张人脸图片，其中 **face_0.jpg** 和 **face_1.jpg** 为人脸 A ，**face_2.jpg** 为人脸 B 。通常情况下，将图片转换为模型的输入需要经过以下三个步骤:
 
@@ -677,7 +675,7 @@ bash scripts/build_facial_feature_model.sh
 python scripts/convert_image.py images/face_0.jpg images/face_1.jpg
 ```
 
-### 4.2 编译该项目
+## 6.2 编译该项目
 
 本项目以 [csolution](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md) 格式提供，我们使用 [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-operation.md) 中的 cbuild 工具在命令行中构建项目。你可以执行以下代码来快速编译本项目。
 
@@ -685,9 +683,9 @@ python scripts/convert_image.py images/face_0.jpg images/face_1.jpg
 cbuild project.csolution.yml -c .event+Corstone_310 --packs --update-rte --toolchain GCC
 ```
 
-## 5 在 AVH 上进行部署和测试
+# 7 在 AVH 上进行部署和测试
 
-### 5.1 运行环境简介
+## 7.1 运行环境简介
 
 AVH 仿真模型 (AVH Simulation models) 使软件程序能够在虚拟目标上执行。提供两种不同的 AVH 建模技术：
 
@@ -703,13 +701,13 @@ AVH 仿真模型 (AVH Simulation models) 使软件程序能够在虚拟目标上
 
 如果你需要更多多于本项目运行环境的介绍，你可以参考 [Arm Virtual Hardware Introduction](https://arm-software.github.io/AVH/main/overview/html/index.html)
 
-### 5.2 运行 Demo
+## 7.2 运行 Demo
 
 ```bash
 FVP_Corstone_SSE-300 -a ./out/hello_vsi/Corstone_310/event/hello_vsi.axf -C mps3_board.v_path=./source/VSI/data_sensor/python/
 ```
 
-## 6 参考资料
+# 8 参考资料
 
 - [insightface/recognition/arcface_paddle](https://github.com/deepinsight/insightface/tree/master/recognition/arcface_paddle)
 - [csolution](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md)
