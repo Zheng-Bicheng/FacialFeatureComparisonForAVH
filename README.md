@@ -28,14 +28,14 @@ Arm 虚拟硬件产品的技术概览示意图如下所示。开发者也可访�
 
 # 3 实验前准备
 
-在实验开始前请参考 [如何订阅使用 Arm 虚拟硬件镜像的百度智能云云服务器 BCC 实例](docs/subscription.md) 来购买并初始化一个基于 Arm 虚拟硬件镜像的百度智能云云服务器 BCC 实例。
+在实验开始前请参考 [如何订阅使用 Arm 虚拟硬件镜像的百度智能云云服务器 BCC 实例](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/docs/subscription.md) 来购买并初始化一个基于 Arm 虚拟硬件镜像的百度智能云云服务器 BCC 实例。
 
 # 4 配置开发环境
 
 该项目基于 **使用Arm 架构的百度云服务器** 并利用 **Arm 虚拟硬件 (Arm Virtual Hardware, AVH)** 运行。根据服务器架构的不同，我们需要针对性的对开发环境进行配置。为了简化大家的时间，我们提供了两个脚本文件来帮助大家快速配置环境，如需了解更多细节，请参考脚本文件中的注释:
 
-- [FacialFeatureComparisonForAVH/scripts/config_cmsis_toolbox.sh](./scripts/config_cmsis_toolbox.sh)
-- [FacialFeatureComparisonForAVH/scripts/config_python.sh](./scripts/config_python.sh)
+- [FacialFeatureComparisonForAVH/scripts/config_cmsis_toolbox.sh](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_cmsis_toolbox.sh)
+- [FacialFeatureComparisonForAVH/scripts/config_python.sh](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_python.sh)
 
 你可以执行以下代码来快速配置开发环境
 
@@ -67,7 +67,7 @@ bash scripts/config_python.sh
 
 为了简化大家的时间，我们提供了脚本文件来帮助大家快速利用 TVM ，如需了解更多细节，请参考脚本文件中的注释:
 
-- [FacialFeatureComparisonForAVH/scripts/build_facial_feature_model.sh](./scripts/config_cmsis_toolbox.sh)
+- [FacialFeatureComparisonForAVH/scripts/build_facial_feature_model.sh](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/scripts/build_facial_feature_model.sh)
 
 你可以执行以下代码来快速使用 TVM 编译模型
 
@@ -82,7 +82,7 @@ bash scripts/build_facial_feature_model.sh
 
 ## 6.1 将图片转换为输入数据
 
-[FacialFeatureComparisonForAVH/images](./images) 目录下存放了三张人脸图片，其中 **face_0.jpg** 和 **face_1.jpg** 为人脸 A ，**face_2.jpg** 为人脸 B 。通常情况下，将图片转换为模型的输入需要经过以下三个步骤:
+[FacialFeatureComparisonForAVH/images](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/tree/develop/images) 目录下存放了三张人脸图片，其中 **face_0.jpg** 和 **face_1.jpg** 为人脸 A ，**face_2.jpg** 为人脸 B 。通常情况下，将图片转换为模型的输入需要经过以下三个步骤:
 
 1. 颜色通道转换（BGR2RGB）
 2. 图片缩放（Resize）
@@ -90,7 +90,7 @@ bash scripts/build_facial_feature_model.sh
 
 为了简化大家的时间，我们同样提供了 python 脚本来帮大家快速将输入图片转换为输入数据，如果你想要了解更多的细节，请参考脚本文件中的注释:
 
-- [FacialFeatureComparisonForAVH/scripts/convert_image.py](./scripts/convert_image.py)
+- [FacialFeatureComparisonForAVH/scripts/convert_image.py](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/scripts/convert_image.py)
 
 你可以执行以下代码来快速将输入图片转换为输入数据
 
