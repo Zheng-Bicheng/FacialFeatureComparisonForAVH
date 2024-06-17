@@ -1,0 +1,11 @@
+{
+    "cmsis-csolution.actions": [
+        {
+            "path": "project.csolution.yml",
+            "target": "V2M-MPS3-SSE-300-FVP",
+            "config": {
+                "run": "virtual-hardware.run: Run Program"
+            }
+        }
+    ]
+}
