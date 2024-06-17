@@ -32,14 +32,6 @@ python3 -m tvm.driver.tvmc compile --target=cmsis-nn,c \
     --output=face_feature.tar
 rm inference.onnx
 
-# Extract the TVM-based deployment library
 mkdir -p "${PWD}/face_feature"
 tar -xvf face_feature.tar -C "${PWD}/face_feature"
 rm -rf face_feature.tar
-
-# 
-python convert_image.py images/face_0.jpg images/face_1.jpg
-
-# 
-cbuild project.csolution.yml -c .event+Corstone_310 --packs --update-rte --toolchain GCC
-# FVP_Corstone_SSE-310 -a ./out/hello_vsi/Corstone_310/event/hello_vsi.elf -C mps3_board.v_path=./source/VSI/data_sensor/python/
