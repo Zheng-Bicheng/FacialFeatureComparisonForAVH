@@ -17,8 +17,9 @@ else
   echo "When the operating system is Linux, the system architecture only supports (x86_64 and aarch64), but the current architecture is $ARCH."
   exit 1
 fi
-cmsis_toolbox_version="2.4.0"
-cmsis_toolbox_url="https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases/download/${cmsis_toolbox_version}/${cmsis_toolbox_name}.tar.gz"
+# cmsis_toolbox_version="2.4.0"
+# cmsis_toolbox_url="https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases/download/${cmsis_toolbox_version}/${cmsis_toolbox_name}.tar.gz"
+cmsis_toolbox_url="https://csdn-static.oss-cn-beijing.aliyuncs.com/release/arm-ai/${cmsis_toolbox_name}.tar.gz"
 wget ${cmsis_toolbox_url}
 tar -vxf ${cmsis_toolbox_name}.tar.gz
 rm ${cmsis_toolbox_name}.tar.gz

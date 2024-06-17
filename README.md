@@ -28,9 +28,32 @@ Arm 虚拟硬件产品的技术概览示意图如下所示。开发者也可访�
 
 # 3 实验前准备
 
+## 3.1 订阅 Arm 虚拟硬件镜像的百度智能云云服务器 BCC 实例
+
 在实验开始前请参考 [如何订阅使用 Arm 虚拟硬件镜像的百度智能云云服务器 BCC 实例](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/docs/subscription.md) 来购买并初始化一个基于 Arm 虚拟硬件镜像的百度智能云云服务器 BCC 实例。
 
-# 4 配置开发环境
+## 3.2 克隆实验代码
+
+首先我们需要将实验代码克隆（下载）至 BCC 服务器实例中，便于后续使用 Arm 虚拟硬件镜像环境中的软件开发工具进行进一步的开发调试。
+本实验代码的仓库地址为：https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH.git ，通过以下命令可以将代码仓库中的代码克隆下载至服务器中。
+
+```bash
+git clone https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH.git
+```
+
+为了加速大家的下载速度，我们也提供了gitee镜像源，通过以下命令可以使用gitee镜像源将代码仓库中的代码克隆下载至服务器中。
+
+```bash
+git clone https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH.git
+```
+
+命令执行后参考结果示意图如下所示：
+
+![alt text](docs/images/image.png)
+
+# 4 实验步骤
+
+## 4.1 配置开发环境
 
 该项目基于 **使用Arm 架构的百度云服务器** 并利用 **Arm 虚拟硬件 (Arm Virtual Hardware, AVH)** 运行。根据服务器架构的不同，我们需要针对性的对开发环境进行配置。为了简化大家的时间，我们提供了两个脚本文件来帮助大家快速配置环境，如需了解更多细节，请参考脚本文件中的注释:
 
@@ -45,9 +68,9 @@ bash scripts/config_cmsis_toolbox.sh
 bash scripts/config_python.sh
 ```
 
-# 5 配置并编译人脸特征提取模型
+## 4.2 配置并编译人脸特征提取模型
 
-## 5.1 模型介绍
+### 4.2.1 模型介绍
 
 本项目使用的人脸识别特征提取模型是 **Adaface** ，你可以在 [insightface/recognition/arcface_paddle](https://github.com/deepinsight/insightface/tree/master/recognition/arcface_paddle) 中找到它的详细介绍。受限于 MCU 设备极为紧张的内存，我们这里选用了 backbone 为 **MobileFace** 的 **Adaface** 模型，以下是它的详细参数：
 
@@ -55,7 +78,7 @@ bash scripts/config_python.sh
 | ------------------------- | ------ | ------- | ------- | -------| -------- |---- |
 | MobileFace-Paddle      | 0.9952 | 0.9280  | 0.9612  | 4.3ms  | 2.3ms    | [download link](https://paddle-model-ecology.bj.bcebos.com/model/insight-face/mobileface_v1.0_infer.tar)  |
 
-## 5.2 使用 TVM 编译模型
+### 4.2.2 使用 TVM 编译模型
 
 本项目参考了 [ArmDeveloperEcosystem/Paddle-examples-for-AVH](https://github.com/ArmDeveloperEcosystem/Paddle-examples-for-AVH)，使用 **TVM** 来将人脸特征提取模型转换成可以在 MCU 设备上部署的 C 代码，关于 TVM 的更多介绍，你可以参考 [apache/tvm](https://github.com/apache/tvm)。
 
@@ -78,9 +101,9 @@ bash scripts/build_facial_feature_model.sh
 
 运行脚本后，该项目目录下将出现 **face_feature** 文件夹，文件夹内存放了可以在 MCU 设备上部署模型的 C 代码。
 
-# 6 编译基于 AVH 实现的人脸特征提取 Demo
+## 4.3 编译基于 AVH 实现的人脸特征提取 Demo
 
-## 6.1 将图片转换为输入数据
+### 4.3.1 将图片转换为输入数据
 
 [FacialFeatureComparisonForAVH/images](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/tree/develop/images) 目录下存放了三张人脸图片，其中 **face_0.jpg** 和 **face_1.jpg** 为人脸 A ，**face_2.jpg** 为人脸 B 。通常情况下，将图片转换为模型的输入需要经过以下三个步骤:
 
@@ -98,7 +121,7 @@ bash scripts/build_facial_feature_model.sh
 python scripts/convert_image.py images/face_0.jpg images/face_1.jpg
 ```
 
-## 6.2 编译该项目
+### 4.3.2 编译该项目
 
 本项目以 [csolution](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md) 格式提供，我们使用 [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-operation.md) 中的 cbuild 工具在命令行中构建项目。你可以执行以下代码来快速编译本项目。
 
@@ -106,37 +129,38 @@ python scripts/convert_image.py images/face_0.jpg images/face_1.jpg
 cbuild project.csolution.yml -c .event+Corstone_310 --packs --update-rte --toolchain GCC
 ```
 
-# 7 在 AVH 上进行部署和测试
-
-## 7.1 运行环境简介
-
-AVH 仿真模型 (AVH Simulation models) 使软件程序能够在虚拟目标上执行。提供两种不同的 AVH 建模技术：
-
-- AVH 固定虚拟平台 (FVPs)
-  - 基于 Arm Cortex-M 的参考平台的精确仿真模型，例如 Corstone-315/310/300。更多信息请参考[Simulation](https://arm-software.github.io/AVH/main/simulation/html/index.html)。
-  - 适用于云原生和桌面环境。详情请参考[Infrastructure](https://arm-software.github.io/AVH/main/infrastructure/html/index.html)。
-- AVH Corellium 模型
-  - 流行的物联网开发板和精选 Arm 参考平台的功能准确的虚拟表示：
-    - 支持 Linux 操作系统的基于 Cortex-A 的系统，例如 Raspberry Pi 和 NXP i.MX。
-    - 选定的基于 Cortex-M 的开发套件。
-  - 软件二进制文件与硬件目标兼容。
-  - 可通过 [app.avh.arm.com](https://app.avh.arm.com/) 云平台获取。更多信息请参考[AVH Users's Guide](https://developer.arm.com/docs/107660)。
-
-如果你需要更多多于本项目运行环境的介绍，你可以参考 [Arm Virtual Hardware Introduction](https://arm-software.github.io/AVH/main/overview/html/index.html)
-
-## 7.2 运行 Demo
+# 5 在 AVH 上进行部署和测试
 
 ```bash
-FVP_Corstone_SSE-300 -a ./out/hello_vsi/Corstone_310/event/hello_vsi.axf -C mps3_board.v_path=./source/VSI/data_sensor/python/
+/opt/VHT/bin/FVP_Corstone_SSE-300 --stat --simlimit 8000 -f FVP_Corstone_SSE-300_Config.txt ./out/hello_vsi/Corstone_310/event/hello_vsi.axf
 ```
 
-# 8 参考资料
+其中，该命令部分参数解读如下：
 
-- [insightface/recognition/arcface_paddle](https://github.com/deepinsight/insightface/tree/master/recognition/arcface_paddle)
-- [csolution](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md)
-- [Arm Virtual Hardware Introduction](https://arm-software.github.io/AVH/main/overview/html/index.html)
-- [apache/tvm](https://github.com/apache/tvm)
-- [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-operation.md)
-- [Infrastructure](https://arm-software.github.io/AVH/main/infrastructure/html/index.html)
-- [Simulation](https://arm-software.github.io/AVH/main/simulation/html/index.html)
-- [Arm® Keil® Microcontroller Development Kit (MDK) Getting Started Guide](https://developer.arm.com/documentation/109350/v6)
+-  `/opt/VHT/bin/FVP_Corstone_SSE-300` 即为所调用的 Cortex-M7 的 FVP 模型的名称。
+-  `--stat` 表示停止模拟时，打印相关的运行状态信息。
+-  `--simlimit 8000` 表示模拟运行的时间上限为 8000s，即若用户未手动退出，则8000s 后程序会自动退出运行。
+-  `out/image.axf` 即为所执行的应用文件，即本实验项目开发的指纹图像识别应用的可执行文件。
+-  `-f FVP_Corstone_SSE-300_Config.txt` 即指定了 FVP 模型运行时的所依据的配置文件。可以通过 `/opt/VHT/bin/FVP_Corstone_SSE-300 -l` 命令获取基于 FVP_Corstone_SSE-300 的所有可配置的参数及其默认值（初始值）信息。用户可根据自身需求进行参数调整，获得不同的应用执行效果。
+
+# 6 参考资料
+
+1. [Arm 虚拟硬件产品简介](https://www.arm.com/virtual-hardware)
+2. [Arm 虚拟硬件帮助文档](https://arm-software.github.io/AVH/main/overview/html/index.html)
+3. [Arm 虚拟硬件开发者资源](https://github.com/ARM-software/VHT)
+4. 【中文技术指南】[Arm 虚拟硬件实践专题一：产品订阅指南（百度智能云版）](https://mp.weixin.qq.com/s/sYQkM9EaBveB2KHJKopkbQ)
+5. 【中文技术指南】[Arm 虚拟硬件实践专题二：Arm 虚拟硬件 FVP 模型入门指南](https://mp.weixin.qq.com/s/E-R7Jmlsu_jENg6AYA9tjw)
+6. 【中文视频直播课】[加速AI开发，1小时快速入门Arm虚拟硬件](https://live.csdn.net/room/csdnnews/5m2CBlDp)
+7. [Arm® Keil® Microcontroller Development Kit (MDK) Getting Started Guide](https://developer.arm.com/documentation/109350/v6)
+8. [Simulation](https://arm-software.github.io/AVH/main/simulation/html/index.html)
+9. [Infrastructure](https://arm-software.github.io/AVH/main/infrastructure/html/index.html)
+10. [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-operation.md)
+11. [apache/tvm](https://github.com/apache/tvm)
+12. [Arm Virtual Hardware Introduction](https://arm-software.github.io/AVH/main/overview/html/index.html)
+13. [csolution](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md)
+14. [insightface/recognition/arcface_paddle](https://github.com/deepinsight/insightface/tree/master/recognition/arcface_paddle)
+15. Arm 社区微信公众号
+   <div align=center>
+   <img src="https://img-operation.csdnimg.cn/csdn/silkroad/img/1715759269054.jpg" width="400" alt="Arm 社区微信公众号"> 
+   </div>
+   <br>
