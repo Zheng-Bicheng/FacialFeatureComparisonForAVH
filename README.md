@@ -49,7 +49,10 @@ git clone https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH.git
 
 命令执行后参考结果示意图如下所示：
 
-![alt text](docs/images/image.png)
+<div align=center>
+<img src="docs/images/git_clone.png" width="400" alt="克隆实验代码结果演示">
+<br>图3-2-1. 克隆实验代码结果演示</div>
+<br>
 
 # 4 实验步骤
 
@@ -64,9 +67,21 @@ git clone https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH.git
 
 ```bash
 cd /path/to/FacialFeatureComparisonForAVH
-bash scripts/config_cmsis_toolbox.sh
+sudo bash scripts/config_cmsis_toolbox.sh
 bash scripts/config_python.sh
 ```
+
+命令执行后参考结果示意图如下所示：
+
+<div align=center>
+<img src="docs/images/config_cmsis_toolbox.png" width="400" alt="配置CMSIS-ToolBox开发环境结果演示">
+<br>图4-1-1. 配置CMSIS-ToolBox开发环境结果演示</div>
+<br>
+
+<div align=center>
+<img src="docs/images/config_python.png" width="400" alt="配置python开发环境结果演示">
+<br>图4-1-2. 配置python开发环境结果演示</div>
+<br>
 
 ## 4.2 配置并编译人脸特征提取模型
 
