@@ -120,9 +120,17 @@ bash scripts/config_pack.sh
 
 ### 4.1.4 更新 FVP 开发环境
 
+为了同步本地与云服务器的开发环境，我们还需要更新服务器 FVP 模拟器的版本。
+
 ```bash
-sudo bash scripts/config_pack.sh
+cd /path/to/FacialFeatureComparisonForAVH  # 进入项目根目录
+sudo bash scripts/config_fvp.sh
 ```
+
+<div align=center>
+<img src="docs/images/config_fvp.png" width="400" alt="更新 FVP 开发环境结果演示">
+<br>图4-1-4. 更新 FVP 开发环境结果演示</div>
+<br>
 
 ## 4.2 配置并编译人脸特征提取模型
 
