@@ -54,7 +54,7 @@ git clone https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH.git
 命令执行后参考结果示意图如下所示：
 
 <div align=center>
-<img src="docs/images/git_clone.png" width="400" alt="克隆实验代码结果演示">
+<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/git_clone.png" width="400" alt="克隆实验代码结果演示">
 <br>图3-2-1. 克隆实验代码结果演示</div>
 <br>
 
@@ -85,7 +85,7 @@ sudo bash scripts/config_cmsis_toolbox.sh
 命令执行后参考结果示意图如下所示：
 
 <div align=center>
-<img src="docs/images/config_cmsis_toolbox.png" width="400" alt="配置 CMSIS-ToolBox 开发环境结果演示">
+<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/config_cmsis_toolbox.png" width="400" alt="配置 CMSIS-ToolBox 开发环境结果演示">
 <br>图4-1-1. 配置 CMSIS-ToolBox 开发环境结果演示</div>
 <br>
 
@@ -99,7 +99,7 @@ source scripts/config_python.sh
 ```
 
 <div align=center>
-<img src="docs/images/config_python.png" width="400" alt="配置 Python 开发环境结果演示">
+<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/config_python.png" width="400" alt="配置 Python 开发环境结果演示">
 <br>图4-1-2. 配置 Python 开发环境结果演示</div>
 <br>
 
@@ -114,7 +114,7 @@ bash scripts/config_pack.sh
 ```
 
 <div align=center>
-<img src="docs/images/config_pack.png" width="400" alt="配置 CMSIS-Pack 软件包结果演示">
+<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/config_pack.png" width="400" alt="配置 CMSIS-Pack 软件包结果演示">
 <br>图4-1-3. 配置 CMSIS-Pack 软件包结果演示</div>
 <br>
 
@@ -128,7 +128,7 @@ sudo bash scripts/config_fvp.sh
 ```
 
 <div align=center>
-<img src="docs/images/config_fvp.png" width="400" alt="更新 FVP 开发环境结果演示">
+<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/config_fvp.png" width="400" alt="更新 FVP 开发环境结果演示">
 <br>图4-1-4. 更新 FVP 开发环境结果演示</div>
 <br>
 
@@ -164,7 +164,7 @@ bash scripts/build_facial_feature_model.sh
 ```
 
 <div align=center>
-<img src="docs/images/build_facial_feature_model.png" width="400" alt="使用 TVM 编译模型结果演示">
+<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/build_facial_feature_model.png" width="400" alt="使用 TVM 编译模型结果演示">
 <br>图4-2-2-1. 使用 TVM 编译模型结果演示</div>
 <br>
 
@@ -192,7 +192,7 @@ python scripts/convert_image.py images/face_0.jpg images/face_1.jpg
 ```
 
 <div align=center>
-<img src="docs/images/convert_image.png" width="400" alt="将图片转换为输入数据结果演示">
+<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/convert_image.png" width="400" alt="将图片转换为输入数据结果演示">
 <br>图4-3-1. 将图片转换为输入数据结果演示</div>
 <br>
 
@@ -205,7 +205,7 @@ cbuild project.csolution.yml
 ```
 
 <div align=center>
-<img src="docs/images/cbuild.png" width="400" alt="编译该项目结果演示">
+<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/cbuild.png" width="400" alt="编译该项目结果演示">
 <br>图4-3-2. 编译该项目结果演示</div>
 <br>
 
@@ -216,7 +216,7 @@ cbuild project.csolution.yml
 ```
 
 <div align=center>
-<img src="docs/images/run.png" width="400" alt="部署和测试结果演示">
+<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/run.png" width="400" alt="部署和测试结果演示">
 <br>图5-1. 部署和测试结果演示</div>
 <br>
 
