@@ -24,7 +24,6 @@
 #include "main.h"
 
 int main (void) {
-
   osKernelInitialize();                 // Initialize CMSIS-RTOS2
   app_initialize();                     // Initialize application
   osKernelStart();                      // Start thread execution

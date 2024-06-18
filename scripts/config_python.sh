@@ -7,8 +7,8 @@ if [ "$OS" != "Linux" ]; then
    exit 1
 fi
 
-# Upgrade pip
-pip install --upgrade pip
+echo 'export PATH=/home/ubuntu/.local/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
 
 # Install paddlepaddle/paddle2onnx using pip
 # https://www.paddlepaddle.org.cn/whl/linux/cpu-mkl/develop.html

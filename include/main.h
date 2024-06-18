@@ -22,5 +22,6 @@
 
 /* Prototypes */
 extern void app_initialize (void);
+extern void app_main (void *argument);
 
 #endif

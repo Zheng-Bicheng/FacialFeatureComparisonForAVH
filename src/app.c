@@ -19,10 +19,10 @@
 #include <stdio.h>
 #include "main.h"
 #include "cmsis_os2.h"
+
 #include <crt_config.h>
 #include <tvmgen_face_feature.h>
 #include <math.h>
-
 #include "input_0.h"
 #include "output_0.h"
 #include "input_1.h"
@@ -62,29 +62,41 @@ float cosine_similarity(const float* a, const float* b, int n) {
  * Application main thread
  *---------------------------------------------------------------------------*/
 
-static void app_main (void *argument) {
+void app_main (void *argument) {
   (void)argument;
 
+  printf("-> 读取人脸A的数据-开始\r\n");
   struct tvmgen_face_feature_inputs cls_input_0 = {
 		.x = input_0,
 	};
 	struct tvmgen_face_feature_outputs cls_output_0 = {
 		.output = output_0,
 	};
-	tvmgen_face_feature_run(&cls_input_0, &cls_output_0);
+  printf("-> 读取人脸A的数据-结束\r\n");
 
+  printf("-> 第一次推理-开始\r\n");
+	tvmgen_face_feature_run(&cls_input_0, &cls_output_0);
+  printf("-> 第一次推理-结束\r\n");
+
+  printf("-> 读取人脸B的数据-开始\r\n");
   struct tvmgen_face_feature_inputs cls_input_1 = {
 		.x = input_1,
 	};
 	struct tvmgen_face_feature_outputs cls_output_1 = {
 		.output = output_1,
 	};
+  printf("-> 读取人脸B的数据-结束\r\n");
+
+  printf("-> 第二次推理-开始\r\n");
 	tvmgen_face_feature_run(&cls_input_1, &cls_output_1);
+  printf("-> 第二次推理-结束\r\n");
 		
+  printf("-> 计算相似度-开始\r\n");
   float sim = cosine_similarity(output_0, output_1, 512);
-  printf("cosine_similarity is %f\r\n", sim);
+  printf("-> 计算相似度-结束\r\n");
+
+  printf("有 %f 的概率是同一张人脸\r\n", sim * 100);
   printf("EXITTHESIM\r\n");
-  osDelay(osWaitForever);
 }
 
 /*---------------------------------------------------------------------------
