@@ -232,14 +232,11 @@ cbuild project.csolution.yml -c .event+Corstone_310 --packs --update-rte --toolc
 5. 【中文技术指南】[Arm 虚拟硬件实践专题二：Arm 虚拟硬件 FVP 模型入门指南](https://mp.weixin.qq.com/s/E-R7Jmlsu_jENg6AYA9tjw)
 6. 【中文视频直播课】[加速AI开发，1小时快速入门Arm虚拟硬件](https://live.csdn.net/room/csdnnews/5m2CBlDp)
 7. [Arm® Keil® Microcontroller Development Kit (MDK) Getting Started Guide](https://developer.arm.com/documentation/109350/v6)
-8. [Simulation](https://arm-software.github.io/AVH/main/simulation/html/index.html)
-9. [Infrastructure](https://arm-software.github.io/AVH/main/infrastructure/html/index.html)
-10. [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-operation.md)
-11. [apache/tvm](https://github.com/apache/tvm)
-12. [Arm Virtual Hardware Introduction](https://arm-software.github.io/AVH/main/overview/html/index.html)
-13. [csolution](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md)
-14. [insightface/recognition/arcface_paddle](https://github.com/deepinsight/insightface/tree/master/recognition/arcface_paddle)
-15. Arm 社区微信公众号
+8. [Open-CMSIS-Pack](https://www.open-cmsis-pack.org/)
+15. [CMSIS-Toolbox](https://arm-software.github.io/CMSIS_6/latest/Toolbox/index.html)
+13. [Github/apache/tvm](https://github.com/apache/tvm)
+14. [Github/deepinsight/insightface](https://github.com/deepinsight/insightface)
+20. Arm 社区微信公众号
    <div align=center>
    <img src="https://img-operation.csdnimg.cn/csdn/silkroad/img/1715759269054.jpg" width="400" alt="Arm 社区微信公众号"> 
    </div>

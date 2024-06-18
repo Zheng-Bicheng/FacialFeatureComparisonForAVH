@@ -25,6 +25,7 @@ tar -vxf ${cmsis_toolbox_name}.tar.gz
 rm ${cmsis_toolbox_name}.tar.gz
 
 # copy to opt
-mv ${cmsis_toolbox_name} ctools
+mv ${cmsis_toolbox_name}/${cmsis_toolbox_name} ${PWD}/ctools
+rm -rf ${cmsis_toolbox_name}
 rm -rf /opt/ctools
 mv ctools /opt
