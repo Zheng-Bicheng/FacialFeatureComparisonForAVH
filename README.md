@@ -201,7 +201,10 @@ python scripts/convert_image.py images/face_0.jpg images/face_1.jpg
 本项目以 [csolution](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md) 格式提供，我们使用 [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-operation.md) 中的 cbuild 工具在命令行中构建项目。你可以执行以下代码来快速编译本项目。
 
 ```bash
-cbuild project.csolution.yml
+cd /path/to/FacialFeatureComparisonForAVH  # 进入项目根目录
+rm -rf ./tmp  # 删除编译目录
+armlm activate -product KEMDK-COM0 -server https://mdk-preview.keil.arm.com  # 激活 License
+cbuild project.csolution.yml  # 编译项目
 ```
 
 <div align=center>
