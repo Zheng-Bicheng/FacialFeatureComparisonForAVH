@@ -118,6 +118,12 @@ bash scripts/config_pack.sh
 <br>图4-1-3. 配置 CMSIS-Pack 软件包结果演示</div>
 <br>
 
+### 4.1.4 更新 FVP 开发环境
+
+```bash
+sudo bash scripts/config_pack.sh
+```
+
 ## 4.2 配置并编译人脸特征提取模型
 
 ### 4.2.1 模型介绍
@@ -202,8 +208,8 @@ cbuild project.csolution.yml
 ```
 
 <div align=center>
-<img src="docs/images/cbuild.png" width="400" alt="编译该项目结果演示">
-<br>图4-3-2. 编译该项目结果演示</div>
+<img src="docs/images/run.png" width="400" alt="部署和测试结果演示">
+<br>图5-1. 部署和测试结果演示</div>
 <br>
 
 其中，该命令部分参数解读如下：

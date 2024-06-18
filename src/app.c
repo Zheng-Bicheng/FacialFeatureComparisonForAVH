@@ -62,7 +62,7 @@ float cosine_similarity(const float* a, const float* b, int n) {
  * Application main thread
  *---------------------------------------------------------------------------*/
 
-static void app_main (void *argument) {
+void app_main (void *argument) {
   (void)argument;
 
   printf("-> 读取人脸A的数据-开始\r\n");
@@ -94,10 +94,9 @@ static void app_main (void *argument) {
   printf("-> 计算相似度-开始\r\n");
   float sim = cosine_similarity(output_0, output_1, 512);
   printf("-> 计算相似度-结束\r\n");
-  
+
   printf("有 %f 的概率是同一张人脸\r\n", sim * 100);
   printf("EXITTHESIM\r\n");
-  osDelay(osWaitForever);
 }
 
 /*---------------------------------------------------------------------------
