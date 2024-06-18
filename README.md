@@ -206,7 +206,7 @@ python scripts/convert_image.py images/face_0.jpg images/face_1.jpg
 本项目以 [csolution](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md) 格式提供，我们使用 [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-operation.md) 中的 cbuild 工具在命令行中构建项目。你可以执行以下代码来快速编译本项目。
 
 ```bash
-cbuild project.csolution.yml -c .event+Corstone_310 --packs --update-rte --toolchain GCC
+cbuild project.csolution.yml --packs --update-rte --toolchain GCC
 ```
 
 # 5 在 AVH 上进行部署和测试
