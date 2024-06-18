@@ -2,6 +2,8 @@
 
 # 1 实验背景
 
+## 1.1 Arm 虚拟硬件介绍
+
 在现代嵌入式和物联网开发中，快速迭代和高效测试至关重要。Arm 虚拟硬件（Arm Virtual Hardware, AVH）提供了一个强大的开发环境。基于 Arm 虚拟硬件的百度云服务器内置 Ubuntu Linux 镜像，并包含了丰富的 Arm 开发工具，如 Arm 编译器、FVP 模型和针对 Cortex-M 系列处理器的其他工具。这些工具不仅帮助开发者快速上手，还支持评估 CI/CD、MLOps 和 DevOps 工作流中的自动化测试。订阅访问和使用此版本的 Arm 虚拟硬件，您需同意产品最终用户许可协议中与免费测试版许可相关的条款和协议。 
  
 Arm 虚拟硬件产品的技术概览示意图如下所示。开发者也可访问 Arm 虚拟硬件[产品介绍页](https://www.arm.com/products/development-tools/simulation/virtual-hardware)和产品[技术文档](https://arm-software.github.io/AVH/main/overview/html/index.html)了解更多关于 Arm 虚拟硬件产品知识。 
@@ -11,6 +13,8 @@ Arm 虚拟硬件产品的技术概览示意图如下所示。开发者也可访�
 <img src="https://arm-software.github.io/AVH/main/overview/html/avh_overview.png" width="800" alt="Arm 虚拟硬件产品概览">
 <br>图1. Arm 虚拟硬件产品概览</div>
 <br>
+
+## 1.2 文章简介
 
 本文将详细介绍如何基于 AVH 部署一个人脸特征提取模型。通过利用 AVH，我们可以在不依赖实际硬件的情况下进行高效开发和测试，从而大大缩短开发周期。本文将涵盖以下内容：
 
