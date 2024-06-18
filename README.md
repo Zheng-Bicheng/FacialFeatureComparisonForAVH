@@ -1,4 +1,4 @@
-<center><b>基于AVH实现人脸特诊提取模型的部署</b></center>
+<center><b>基于AVH实现人脸特征提取模型的部署</b></center>
 
 # 1 实验背景
 
@@ -54,7 +54,7 @@ git clone https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH.git
 命令执行后参考结果示意图如下所示：
 
 <div align=center>
-<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/git_clone.png" width="400" alt="克隆实验代码结果演示">
+<img src="https://img-blog.csdnimg.cn/direct/3000a3cd4fad45a682ed3af765683515.png#pic_center" width="400" alt="克隆实验代码结果演示">
 <br>图3-2-1. 克隆实验代码结果演示</div>
 <br>
 
@@ -85,7 +85,7 @@ sudo bash scripts/config_cmsis_toolbox.sh
 命令执行后参考结果示意图如下所示：
 
 <div align=center>
-<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/config_cmsis_toolbox.png" width="400" alt="配置 CMSIS-ToolBox 开发环境结果演示">
+<img src="https://img-blog.csdnimg.cn/direct/56d45efaeb4644cea7ff6bfc168022d2.png#pic_center" width="400" alt="配置 CMSIS-ToolBox 开发环境结果演示">
 <br>图4-1-1. 配置 CMSIS-ToolBox 开发环境结果演示</div>
 <br>
 
@@ -99,7 +99,7 @@ source scripts/config_python.sh
 ```
 
 <div align=center>
-<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/config_python.png" width="400" alt="配置 Python 开发环境结果演示">
+<img src="https://img-blog.csdnimg.cn/direct/f1dfc326e889424fbcb6b92cd8c2f353.png#pic_center" width="400" alt="配置 Python 开发环境结果演示">
 <br>图4-1-2. 配置 Python 开发环境结果演示</div>
 <br>
 
@@ -114,7 +114,7 @@ bash scripts/config_pack.sh
 ```
 
 <div align=center>
-<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/config_pack.png" width="400" alt="配置 CMSIS-Pack 软件包结果演示">
+<img src="https://img-blog.csdnimg.cn/direct/c77f188c33b74137bbfd46f837799d54.png#pic_center" width="400" alt="配置 CMSIS-Pack 软件包结果演示">
 <br>图4-1-3. 配置 CMSIS-Pack 软件包结果演示</div>
 <br>
 
@@ -128,7 +128,7 @@ sudo bash scripts/config_fvp.sh
 ```
 
 <div align=center>
-<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/config_fvp.png" width="400" alt="更新 FVP 开发环境结果演示">
+<img src="https://img-blog.csdnimg.cn/direct/cc7aef2d8f474650b0e762fdddff5b63.png#pic_center" width="400" alt="更新 FVP 开发环境结果演示">
 <br>图4-1-4. 更新 FVP 开发环境结果演示</div>
 <br>
 
@@ -156,7 +156,7 @@ sudo bash scripts/config_fvp.sh
 
 - [FacialFeatureComparisonForAVH/scripts/build_facial_feature_model.sh](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/scripts/build_facial_feature_model.sh)
 
-你可以执行以下代码来快速使用 TVM 编译模型（受限于服务器性能，编译可能需要持续较长的时间，请耐心等待）
+你可以执行以下代码来快速使用 TVM 编译模型（编译可能需要持续较长的时间，请耐心等待）
 
 ```bash
 cd /path/to/FacialFeatureComparisonForAVH  # 进入项目根目录
@@ -164,7 +164,7 @@ bash scripts/build_facial_feature_model.sh
 ```
 
 <div align=center>
-<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/build_facial_feature_model.png" width="400" alt="使用 TVM 编译模型结果演示">
+<img src="https://img-blog.csdnimg.cn/direct/558cd8db886d491baddd452f48baa3ea.png#pic_center" width="400" alt="使用 TVM 编译模型结果演示">
 <br>图4-2-2-1. 使用 TVM 编译模型结果演示</div>
 <br>
 
@@ -192,7 +192,7 @@ python scripts/convert_image.py images/face_0.jpg images/face_1.jpg
 ```
 
 <div align=center>
-<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/convert_image.png" width="400" alt="将图片转换为输入数据结果演示">
+<img src="https://img-blog.csdnimg.cn/direct/ef9a2f6500b84647866605703fce0ab5.png#pic_center" width="400" alt="将图片转换为输入数据结果演示">
 <br>图4-3-1. 将图片转换为输入数据结果演示</div>
 <br>
 
@@ -205,7 +205,7 @@ cbuild project.csolution.yml
 ```
 
 <div align=center>
-<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/cbuild.png" width="400" alt="编译该项目结果演示">
+<img src="https://img-blog.csdnimg.cn/direct/c17f156668ea42d7be321141227e54ea.png#pic_center" width="400" alt="编译该项目结果演示">
 <br>图4-3-2. 编译该项目结果演示</div>
 <br>
 
@@ -215,8 +215,9 @@ cbuild project.csolution.yml
 /opt/VHT/bin/FVP_Corstone_SSE-300 --stat --simlimit 8000 -f FVP_Corstone_SSE-300_Config.txt out/project/V2M-MPS3-SSE-300-FVP/Debug/project.axf
 ```
 
+
 <div align=center>
-<img src="https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/docs/images/run.png" width="400" alt="部署和测试结果演示">
+<img src="https://img-blog.csdnimg.cn/direct/811b1915049244448b1f16e2bb09150d.png#pic_center" width="400" alt="部署和测试结果演示">
 <br>图5-1. 部署和测试结果演示</div>
 <br>
 
