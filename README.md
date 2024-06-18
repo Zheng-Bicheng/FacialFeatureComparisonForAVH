@@ -1,4 +1,16 @@
-<center><b>基于AVH实现人脸特征提取模型的部署</b></center>
+<center><b>基于 Arm 虚拟硬件实现人脸特征提取模型的部署</b></center>
+
+<br>
+
+**目录**
+
+[toc]
+
+----
+
+> 本实验过程中所显示的优惠价格及费用报销等相关信息仅在【Arm AI 开发体验创造营】体验活动过程中有效，逾期无效，请根据实时价格自行购买和体验。
+> 同时，感谢本次体验活动 Arm 导师 Liliya 对于本博客的指导。
+> 详见活动地址：https://marketing.csdn.net/p/a11ba7c4ee98e52253c8608a085424be
 
 # 1 实验背景
 
@@ -16,12 +28,12 @@ Arm 虚拟硬件产品的技术概览示意图如下所示。开发者也可访�
 
 ## 1.2 文章简介
 
-本文将详细介绍如何基于 AVH 部署一个人脸特征提取模型。通过利用 AVH，我们可以在不依赖实际硬件的情况下进行高效开发和测试，从而大大缩短开发周期。本文将涵盖以下内容：
+本文将详细介绍如何基于 Arm 虚拟硬件部署一个人脸特征提取模型。通过利用 Arm 虚拟硬件，我们可以在不依赖实际硬件的情况下进行高效开发和测试，从而大大缩短开发周期。本文将涵盖以下内容：
 
-- 配置 AVH 开发环境
+- 配置 Arm 虚拟硬件开发环境
 - 配置并编译人脸特征提取模型
-- 编译基于 AVH 实现的人脸特征提取 Demo
-- 在 AVH 上进行部署和测试
+- 编译基于 Arm 虚拟硬件实现的人脸特征提取 Demo
+- 在 Arm 虚拟硬件上进行部署和测试
 
 # 2 实验目标
 
@@ -67,15 +79,16 @@ git clone https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH.git
 - [FacialFeatureComparisonForAVH/scripts/config_cmsis_toolbox.sh](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_cmsis_toolbox.sh)
 - [FacialFeatureComparisonForAVH/scripts/config_python.sh](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_python.sh)
 - [FacialFeatureComparisonForAVH/scripts/config_pack.sh](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_pack.sh)
+- - [FacialFeatureComparisonForAVH/scripts/config_fvp.sh](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_fvp.sh)
 
-### 4.1.1 配置 CMSIS-ToolBox 环境
+### 4.1.1 配置 CMSIS-Toolbox 环境
 
-[CMSIS-Toolbox](https://arm-software.github.io/CMSIS_6/latest/Toolbox/index.html) 是作为 Open-CMSIS-Pack 项目的一部分开发的，该项目与 Arm、NXP 和 STMicroelectronics 合作。它是下一代软件工具的重要组成部分，并统一了与流行的嵌入式工具链（Arm、GCC、IAR 和 LLVM 编译器）的开发流程，CMSIS-Toolbox 提供了命令行工具，用于：
+[CMSIS-Toolbox](https://arm-software.github.io/CMSIS_6/latest/Toolbox/index.html) 是作为 Open-CMSIS-Pack 项目的重要组成部分之一。它统一了流行嵌入式工具链（Arm、GCC、IAR 和 LLVM 编译器）的开发流程，是下一代软件工具的重要组成部分。CMSIS-Toolbox 还提供了命令行工具，用于：
 
 - 利用软件包创建项目并构建嵌入式应用程序，支持使用多种编译工具。
 - 利用 CMSIS-Pack 格式创建、维护和分发软件包。
 
-你可以执行以下代码来快速配置 CMSIS-ToolBox 的开发环境：
+你可以执行以下代码来快速配置 CMSIS-Toolbox 的开发环境：
 
 ```bash
 cd /path/to/FacialFeatureComparisonForAVH  # 进入项目根目录
@@ -85,13 +98,13 @@ sudo bash scripts/config_cmsis_toolbox.sh
 命令执行后参考结果示意图如下所示：
 
 <div align=center>
-<img src="https://img-blog.csdnimg.cn/direct/56d45efaeb4644cea7ff6bfc168022d2.png#pic_center" width="400" alt="配置 CMSIS-ToolBox 开发环境结果演示">
-<br>图4-1-1. 配置 CMSIS-ToolBox 开发环境结果演示</div>
+<img src="https://img-blog.csdnimg.cn/direct/56d45efaeb4644cea7ff6bfc168022d2.png#pic_center" width="400" alt="配置 CMSIS-Toolbox 开发环境结果演示">
+<br>图4-1-1. 配置 CMSIS-Toolbox 开发环境结果演示</div>
 <br>
 
 ### 4.1.2 配置 Python 环境
 
-Python语法和动态类型，以及解释型语言的本质，使它成为多数平台上写脚本和快速开发应用的编程语言，你可以执行以下代码来快速配置 Python 的开发环境：
+Python 语法和动态类型，以及解释型语言的本质，使它成为多数平台上写脚本和快速开发应用的编程语言，你可以执行以下代码来快速配置 Python 的开发环境：
 
 ```bash
 cd /path/to/FacialFeatureComparisonForAVH  # 进入项目根目录
@@ -120,7 +133,7 @@ bash scripts/config_pack.sh
 
 ### 4.1.4 更新 FVP 开发环境
 
-为了同步本地与云服务器的开发环境，我们还需要更新服务器 FVP 模拟器的版本。
+由于本项目需要，我们需要手动的更新 FVP模型组件。请参考下面命令进行更新。
 
 ```bash
 cd /path/to/FacialFeatureComparisonForAVH  # 进入项目根目录
@@ -170,9 +183,9 @@ bash scripts/build_facial_feature_model.sh
 
 运行脚本后，该项目目录下将出现 **face_feature** 文件夹，文件夹内存放了可以在 MCU 设备上部署模型的 C 代码。
 
-## 4.3 编译基于 AVH 实现的人脸特征提取 Demo
+## 4.3 编译人脸特征提取模型 Demo
 
-### 4.3.1 将图片转换为输入数据
+### 4.3.1 图片数据预处理
 
 [FacialFeatureComparisonForAVH/images](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/tree/develop/images) 目录下存放了三张人脸图片，其中 **face_0.jpg** 和 **face_1.jpg** 为人脸 A ，**face_2.jpg** 为人脸 B 。通常情况下，将图片转换为模型的输入需要经过以下三个步骤:
 
@@ -215,6 +228,7 @@ cbuild project.csolution.yml  # 编译项目
 # 5 在 AVH 上进行部署和测试
 
 ```bash
+cd /path/to/FacialFeatureComparisonForAVH  # 进入项目根目录
 /opt/VHT/bin/FVP_Corstone_SSE-300 --stat --simlimit 8000 -f FVP_Corstone_SSE-300_Config.txt out/project/V2M-MPS3-SSE-300-FVP/Debug/project.axf
 ```
 
@@ -226,7 +240,7 @@ cbuild project.csolution.yml  # 编译项目
 
 其中，该命令部分参数解读如下：
 
--  `/opt/VHT/bin/FVP_Corstone_SSE-300` 即为所调用的 Cortex-M55 的 FVP 模型的名称。
+-  `/opt/VHT/bin/FVP_Corstone_SSE-300` 调用含有 Cortex-M55 处理器的 FVP 模型的名称
 -  `--stat` 表示停止模拟时，打印相关的运行状态信息。
 -  `--simlimit 8000` 表示模拟运行的时间上限为 8000s，即若用户未手动退出，则8000s 后程序会自动退出运行。
 -  `out/image.axf` 即为所执行的应用文件，即本实验项目开发的指纹图像识别应用的可执行文件。
