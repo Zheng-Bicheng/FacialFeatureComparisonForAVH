@@ -201,7 +201,10 @@ cbuild project.csolution.yml
 /opt/VHT/bin/FVP_Corstone_SSE-300 --stat --simlimit 8000 -f FVP_Corstone_SSE-300_Config.txt out/project/V2M-MPS3-SSE-300-FVP/Debug/project.axf
 ```
 
-
+<div align=center>
+<img src="docs/images/cbuild.png" width="400" alt="编译该项目结果演示">
+<br>图4-3-2. 编译该项目结果演示</div>
+<br>
 
 其中，该命令部分参数解读如下：
 
