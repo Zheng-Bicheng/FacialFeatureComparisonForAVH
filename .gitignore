@@ -12,3 +12,6 @@ tmp
 *.pdiparams
 *.pdmodel
 *.pdiparams.info
+
+# For TVM
+face_feature

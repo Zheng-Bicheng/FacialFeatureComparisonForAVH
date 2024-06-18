@@ -32,6 +32,7 @@ project:
     - component: ARM::Device:Native Driver:SysTimer@1.1.0
     - component: ARM::Device:Native Driver:SysCounter@1.1.0
     - component: ARM::Device:Startup&C Startup
+
   packs:
     - pack: ARM::CMSIS-RTX@5.8.0
     - pack: ARM::CMSIS@6.0.0

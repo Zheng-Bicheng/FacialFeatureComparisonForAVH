@@ -19,10 +19,10 @@
 #include <stdio.h>
 #include "main.h"
 #include "cmsis_os2.h"
+
 #include <crt_config.h>
 #include <tvmgen_face_feature.h>
 #include <math.h>
-
 #include "input_0.h"
 #include "output_0.h"
 #include "input_1.h"
@@ -82,7 +82,7 @@ static void app_main (void *argument) {
 	tvmgen_face_feature_run(&cls_input_1, &cls_output_1);
 		
   float sim = cosine_similarity(output_0, output_1, 512);
-  printf("cosine_similarity is %f\r\n", sim);
+  printf("有 %f 的概率是同一张人脸\r\n", sim * 100);
   printf("EXITTHESIM\r\n");
   osDelay(osWaitForever);
 }

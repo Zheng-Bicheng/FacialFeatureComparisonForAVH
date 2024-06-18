@@ -35,9 +35,5 @@ solution:
       debug: on
       optimize: none
 
-    - type: Release
-      debug: off
-      optimize: balanced
-
   projects:
     - project: ./project.cproject.yml

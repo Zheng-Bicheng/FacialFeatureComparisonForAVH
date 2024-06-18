@@ -95,7 +95,7 @@ Python语法和动态类型，以及解释型语言的本质，使它成为多�
 
 ```bash
 cd /path/to/FacialFeatureComparisonForAVH  # 进入项目根目录
-bash scripts/config_python.sh
+source scripts/config_python.sh
 ```
 
 <div align=center>
@@ -110,8 +110,13 @@ bash scripts/config_python.sh
 
 ```bash
 cd /path/to/FacialFeatureComparisonForAVH  # 进入项目根目录
-bash scripts/config_python.sh
+bash scripts/config_pack.sh
 ```
+
+<div align=center>
+<img src="docs/images/config_pack.png" width="400" alt="配置 CMSIS-Pack 软件包结果演示">
+<br>图4-1-3. 配置 CMSIS-Pack 软件包结果演示</div>
+<br>
 
 ## 4.2 配置并编译人脸特征提取模型
 
@@ -182,18 +187,25 @@ python scripts/convert_image.py images/face_0.jpg images/face_1.jpg
 本项目以 [csolution](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md) 格式提供，我们使用 [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-operation.md) 中的 cbuild 工具在命令行中构建项目。你可以执行以下代码来快速编译本项目。
 
 ```bash
-cbuild project.csolution.yml --packs --update-rte --toolchain GCC
+cbuild project.csolution.yml
 ```
+
+<div align=center>
+<img src="docs/images/cbuild.png" width="400" alt="编译该项目结果演示">
+<br>图4-3-2. 编译该项目结果演示</div>
+<br>
 
 # 5 在 AVH 上进行部署和测试
 
 ```bash
-/opt/VHT/bin/FVP_Corstone_SSE-300 --stat --simlimit 8000 -f FVP_Corstone_SSE-300_Config.txt ./out/hello_vsi/Corstone_310/event/hello_vsi.axf
+/opt/VHT/bin/FVP_Corstone_SSE-300 --stat --simlimit 8000 -f FVP_Corstone_SSE-300_Config.txt out/project/V2M-MPS3-SSE-300-FVP/Debug/project.axf
 ```
+
+
 
 其中，该命令部分参数解读如下：
 
--  `/opt/VHT/bin/FVP_Corstone_SSE-300` 即为所调用的 Cortex-M7 的 FVP 模型的名称。
+-  `/opt/VHT/bin/FVP_Corstone_SSE-300` 即为所调用的 Cortex-M55 的 FVP 模型的名称。
 -  `--stat` 表示停止模拟时，打印相关的运行状态信息。
 -  `--simlimit 8000` 表示模拟运行的时间上限为 8000s，即若用户未手动退出，则8000s 后程序会自动退出运行。
 -  `out/image.axf` 即为所执行的应用文件，即本实验项目开发的指纹图像识别应用的可执行文件。
