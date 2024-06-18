@@ -79,7 +79,7 @@ git clone https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH.git
 - [FacialFeatureComparisonForAVH/scripts/config_cmsis_toolbox.sh](https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_cmsis_toolbox.sh)
 - [FacialFeatureComparisonForAVH/scripts/config_python.sh](https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_python.sh)
 - [FacialFeatureComparisonForAVH/scripts/config_pack.sh](https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_pack.sh)
-- - [FacialFeatureComparisonForAVH/scripts/config_fvp.sh](https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_fvp.sh)
+- [FacialFeatureComparisonForAVH/scripts/config_fvp.sh](https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_fvp.sh)
 
 ### 4.1.1 配置 CMSIS-Toolbox 环境
 
@@ -183,7 +183,7 @@ bash scripts/build_facial_feature_model.sh
 
 运行脚本后，该项目目录下将出现 **face_feature** 文件夹，文件夹内存放了可以在 MCU 设备上部署模型的 C 代码。
 
-## 4.3 编译人脸特征提取模型 Demo
+## 4.3 编译人脸特征提取应用
 
 ### 4.3.1 图片数据预处理
 
@@ -225,16 +225,17 @@ cbuild project.csolution.yml  # 编译项目
 <br>图4-3-2. 编译该项目结果演示</div>
 <br>
 
-# 5 在 AVH 上进行部署和测试
+# 5 在 Arm 虚拟硬件上进行部署和测试
+
+接下来我们使用 Arm 虚拟硬件对我们编译出来的应用进行模拟和测试
 
 ```bash
 cd /path/to/FacialFeatureComparisonForAVH  # 进入项目根目录
 /opt/VHT/bin/FVP_Corstone_SSE-300 --stat --simlimit 8000 -f FVP_Corstone_SSE-300_Config.txt out/project/V2M-MPS3-SSE-300-FVP/Debug/project.axf
 ```
 
-
 <div align=center>
-<img src="https://img-blog.csdnimg.cn/direct/811b1915049244448b1f16e2bb09150d.png#pic_center" width="400" alt="部署和测试结果演示">
+<img src="https://img-blog.csdnimg.cn/direct/811b1915049244448b1f16e2bb09150d.png#pic_center" width="600" alt="部署和测试结果演示">
 <br>图5-1. 部署和测试结果演示</div>
 <br>
 
