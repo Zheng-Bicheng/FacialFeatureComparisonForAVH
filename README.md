@@ -66,6 +66,7 @@ git clone https://gitee.com/bicheng-zheng/FacialFeatureComparisonForAVH.git
 
 - [FacialFeatureComparisonForAVH/scripts/config_cmsis_toolbox.sh](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_cmsis_toolbox.sh)
 - [FacialFeatureComparisonForAVH/scripts/config_python.sh](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_python.sh)
+- [FacialFeatureComparisonForAVH/scripts/config_pack.sh](https://github.com/Zheng-Bicheng/FacialFeatureComparisonForAVH/blob/main/scripts/config_pack.sh)
 
 ### 4.1.1 配置 CMSIS-ToolBox 环境
 
@@ -105,37 +106,12 @@ bash scripts/config_python.sh
 ### 4.1.3 配置 CMSIS-Pack 软件包
 
 本实验项目的开发采用了 [Open-CMSIS-Pack](https://www.open-cmsis-pack.org/) 项目的标准形式，我们可以使用 Arm 虚拟硬件镜像中预装的 [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox) 工具包里的 **cbuild** 工具来构建本实验项目。
-**需要注意的是**，正常情况下，运行 `cbuild` 命令在构建工程的过程中会自动下载项目所依赖的 [CMSIS Packs](https://www.keil.arm.com/packs/) 软件包。但由于国内外网络环境的差异，部分 CMSIS Packs 软件包资源的下载速度较慢导致无法自动下载成功。因此，为便于开发者顺利地完成本实验项目的体验，作者提供了本实验项目所依赖的 CMSIS Packs 软件包的压缩包供开发者快捷下载和安装。开发者只需要将该压缩包下载至 BCC 服务器实例的对应位置中（`/home/ubuntu` 目录下），覆盖原有文件夹即可完成安装。详细步骤如下：
+**需要注意的是**，正常情况下，运行 `cbuild` 命令在构建工程的过程中会自动下载项目所依赖的 [CMSIS Packs](https://www.keil.arm.com/packs/) 软件包。但由于国内外网络环境的差异，部分 CMSIS Packs 软件包资源的下载速度较慢导致无法自动下载成功。因此，为便于开发者顺利地完成本实验项目的体验，我们提供了脚本文件一键下载和安装 Packs ，你可以执行以下代码来快速配置开发环境：
 
-- **（可选）步骤1. 切换至安装目录**：切换目录至 CMSIS-Pack 软件包的安装目录（确保后续步骤均在此目录下）。若您已经在 `/home/ubuntu` 目录下，可跳过此操作。
-
-   ```sh
-   cd /home/ubuntu
-   ```
-
-- **步骤2. 下载压缩包**：由于压缩包比较大，受网络配置下载速度的影响，请耐心等待下载完成（下载过程大概需要几分钟）。
-
-   ```sh
-   wget https://Arm-workshop.bj.bcebos.com/packs.tar.bz2
-   ```
-   <div align=center>
-   <img src="http://share.recan-li.cn/bed/2024/04/03/5Wck3iShFbAUE7u.png?my_wx_id=721317716" width="800" alt="软件包下载过程中">
-   <br>图48. 软件包下载过程中</div>
-   <br>
-   <div align=center>
-   <img src="http://share.recan-li.cn/bed/2024/04/03/3HmCbdVaSx7pw1I.png?my_wx_id=721317716" width="800" alt="软件包下载完成">
-   <br>图49. 软件包下载完成</div>
-   <br>
-
-- **步骤3. 解压压缩包**：由于压缩包比较大，请耐心等待压缩包解压完成（解压过程大概需要 1-2 分钟）。
-
-   ```sh
-   tar -xvjf packs.tar.bz2
-   ```
-   <div align=center>
-   <img src="http://share.recan-li.cn/bed/2024/04/03/qn8st6dXlK3wCyM.png?my_wx_id=721317716" width="800" alt="压缩包解压完成">
-   <br>图50. 压缩包解压完成</div>
-   <br>
+```bash
+cd /path/to/FacialFeatureComparisonForAVH  # 进入项目根目录
+bash scripts/config_python.sh
+```
 
 ## 4.2 配置并编译人脸特征提取模型
 
